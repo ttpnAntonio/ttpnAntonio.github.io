@@ -1,7 +1,7 @@
 <div class="navbar-wrapper">
     <nav class="navbar navbar-default navbar-fixed-top navbar-expand-md" role="navigation">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Transportación TTPN</a>
+        <div class="container">        
+            <a class="navbar-brand" href="<%= url_for :controller => 'pages', :action => 'index' %>"><img alt="image" src="assets/logo_trazo.png" width="90" height="40"></a>
             <div class="navbar-header page-scroll">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
                     <i class="fa fa-bars"></i>
@@ -9,12 +9,12 @@
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="nav-link page-scroll" href="#page-top">Home</a></li>
-                    <li><a class="nav-link page-scroll" href="#features">Servicios</a></li>
-                    <li><a class="nav-link page-scroll" href="#team">Equipo</a></li>
-                    <li><a class="nav-link page-scroll" href="#testimonials">Clientes</a></li>
-                    <li><a class="nav-link page-scroll" href="#pricing">Premium</a></li>
-                    <li><a class="nav-link page-scroll" href="#contact">Contacto</a></li>
+                    <li><a class="nav-link page-scroll" href="<%= url_for :controller => 'pages', :action => 'index', :anchor => 'page-top' %>"><%= @menu1 %></a></li>
+                    <li><a class="nav-link page-scroll" href="<%= url_for :controller => 'pages', :action => 'index', :anchor => 'features' %>"><%= @menu2 %></a></li>
+                    <li><a class="nav-link page-scroll" href="<%= url_for :controller => 'pages', :action => 'index', :anchor => 'team' %>"><%= @menu3 %></a></li>
+                    <li><a class="nav-link page-scroll" href="<%= url_for :controller => 'pages', :action => 'index', :anchor => 'testimonials' %>"><%= @menu4 %></a></li>
+                    <li><a class="nav-link page-scroll" href="<%= url_for :controller => 'pages', :action => 'index', :anchor => 'pricing' %>"><%= @menu5 %></a></li>
+                    <li><a class="nav-link page-scroll" href="<%= url_for :controller => 'pages', :action => 'index', :anchor => 'contact' %>"><%= @menu6 %></a></li>
                 </ul>
             </div>
         </div>
@@ -29,14 +29,12 @@
         <div class="carousel-item active">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Brindamos<br/>
-                        servicios especializados en<br/>
-                        transportación de personal<br/>
-                        a empresas.</h1>
-                    <p>Transportación local y foranea.</p>
+                    <h1><%= @carrusel11 %><br>
+                    <%= @carrusel12 %><br>
+                    <%= @carrusel13 %><br>
+                    <p><%= @carr1_parrafo %></p>
                     <p>
-                        <a class="btn btn-lg btn-primary" href="#" role="button">Saber más</a>
-                        <a class="caption-link" href="#" role="button">Equipo TTPN</a>
+                        <a class="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target="#modalCarrusel1">Historia</a>
                     </p>
                 </div>
                 <div class="carousel-image wow zoomIn">
@@ -45,14 +43,18 @@
             </div>
             <!-- Set background for slide in css -->
             <div class="header-back one"></div>
-
         </div>
         <div class="carousel-item">
             <div class="container">
                 <div class="carousel-caption blank">
-                    <h1>Tenemos aplicaciones <br/> para comodidad de los clientes.</h1>
-                    <p>Soluciones para ayudarlo a controlar su gasto</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Saber más</a></p>
+                    <h1><%= @carrusel21 %> <br/><%= @carrusel22 %> </h1>
+                    <p><%= @carr2_parrafo %></p>
+                    <p>
+                        <a class="btn btn-lg btn-primary" role="button" data-toggle="modal" data-target="#modalCarrusel2">Saber más</a>
+                    </p>
+                </div>
+                <div class="carousel-image wow zoomIn">
+                    <img src="assets/Lujo.png" alt="Lujo"/>
                 </div>
             </div>
             <!-- Set background for slide in css -->
@@ -69,27 +71,70 @@
     </a>
 </div>
 
+<div class="modal fade" id="modalCarrusel1" tabindex="-1" role="dialog" aria-labelledby="modalCarrusel1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalCarrusel1">Nuestra Historia</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= @modalhistoriatext1 %></p> 
+        <p><%= @modalhistoriatext2 %></p>
+        <p><%= @modalhistoriatext3 %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCarrusel2" tabindex="-1" role="dialog" aria-labelledby="modalCarrusel2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalCarrusel2">Transporte ejecutivo</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+            <%= raw @modalviptext %>
+        </p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <section id="features" class="container services">
     <div class="row">
         <div class="col-sm-3">
-            <h2>Full responsive</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+            <h2><%= @featurestitle1 %></h2>
+            <p><%= @featurestext1 %></p>
+            <p><a class="navy-link" role="button" data-toggle="modal" data-target="#modalServicios1"><%= a="Detalles "%> &raquo;</a></p>
         </div>
         <div class="col-sm-3">
-            <h2>LESS/SASS Files</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+            <h2><%= @featurestitle2 %></h2>
+            <p><%= @featurestext2 %></p>
+            <p><a class="navy-link" role="button" data-toggle="modal" data-target="#modalServicios2"><%= a="Detalles "%> &raquo;</a></p>
         </div>
         <div class="col-sm-3">
-            <h2>6 Charts Library</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+            <h2><%= @featurestitle3 %></h2>
+            <p><%= @featurestext3 %></p>
+            <p><a class="navy-link" role="button" data-toggle="modal" data-target="#modalServicios3"><%= a="Detalles "%> &raquo;</a></p>
         </div>
         <div class="col-sm-3">
-            <h2>Advanced Forms</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-            <p><a class="navy-link" href="#" role="button">Details &raquo;</a></p>
+            <h2><%= @featurestitle4 %></h2>
+            <p><%= @featurestext4 %></p>
+            <p><a class="navy-link" role="button" data-toggle="modal" data-target="#modalServicios4"><%= a="Detalles "%> &raquo;</a></p>
         </div>
     </div>
 </section>
@@ -98,21 +143,21 @@
     <div class="row">
         <div class="col-lg-12 text-center">
             <div class="navy-line"></div>
-            <h1>Over 40+ unique view<br/> <span class="navy"> with many custom components</span> </h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            <h1><%= @featureSubTitel11 %><br/><span class="navy"><%= @featureSubTitel12 %></span> </h1>
+            <p><%= @featureSubTitel13 %> </p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-3 text-center wow fadeInLeft">
             <div>
                 <i class="fa fa-mobile features-icon"></i>
-                <h2>Full responsive</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <h2><%= @featuremovil %></h2>
+                <p><%= @featuremovilp %></p>
             </div>
             <div class="m-t-lg">
                 <i class="fa fa-bar-chart features-icon"></i>
-                <h2>6 Charts Library</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <h2><%= @featureconsumo %></h2>
+                <p><%= @featureconsumop %></p>
             </div>
         </div>
         <div class="col-md-6 text-center  wow zoomIn">
@@ -120,58 +165,144 @@
         </div>
         <div class="col-md-3 text-center wow fadeInRight">
             <div>
-                <i class="fa fa-envelope features-icon"></i>
-                <h2>Mail pages</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-map-marker features-icon"></i>
+                <h2><%= @featuregps %></h2>
+                <p><%= @featuregpsp %></p>
             </div>
             <div class="m-t-lg">
-                <i class="fa fa-google features-icon"></i>
-                <h2>AngularJS version</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                <i class="fa fa-map-o features-icon"></i>
+                <h2><%= @featuremapeo %></h2>
+                <p><%= @featuremapeop %></p>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 text-center">
             <div class="navy-line"></div>
-            <h1>Discover great feautres</h1>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+            <h1><%= @featureSubTitel21 %></h1>
+            <p><%= @featureSubTitel23 %></p>
         </div>
     </div>
     <div class="row features-block">
         <div class="col-lg-6 features-text wow fadeInLeft">
-            <small>INSPINIA</small>
-            <h2>Perfectly designed </h2>
-            <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-            <a href="" class="btn btn-primary">Learn more</a>
+            <small><%= @ttpnsmall %></small>
+            <h2><%= @featurereport %></h2>
+            <p><%= @featurereportp %></p>
         </div>
         <div class="col-lg-6 text-right wow fadeInRight">
-            <img src="assets/dashboard.png" alt="dashboard" class="img-fluid float-right">
+            <img src="assets/campain.png" alt="dashboard" class="img-fluid float-right">
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="modalServicios1" tabindex="-1" role="dialog" aria-labelledby="modalServicios1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalServicios1">Servicio de Ruta</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= @modalruteotext1 %></p> 
+        <p><%= @modalruteotext2 %></p>
+        <p><%= @modalruteotext3 %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalServicios2" tabindex="-1" role="dialog" aria-labelledby="modalServicios2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalServicios2">Tiempo Extra</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= raw @modaltetext1 %></p> 
+        <p><%= raw @modaltetext2 %></p>
+        <p>
+            <small>
+                <%= @modaltetext3 %><br>
+                <%= @modaltetext4 %>
+            </small>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalServicios3" tabindex="-1" role="dialog" aria-labelledby="modalServicios3" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalServicios3">Transportación VIP</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= raw @modalviptext %></p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modalServicios4" tabindex="-1" role="dialog" aria-labelledby="modalServicios4" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalServicios4">Transportación Turística</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><%= raw @modaltransportetext1 %></p> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section id="team" class="gray-section team">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Nuestro Equipo</h1>
-                <p>Siempre preparados para brindarles el mejor servicio y atención.</p>
+                <h1><%= @teamtitle %></h1>
+                <p><%= @teamtext %></p>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 wow fadeInLeft">
                 <div class="team-member">
                     <img src="assets/avatar3.jpg" class="img-fluid rounded-circle img-small" alt="">
-                    <h4><span class="navy">Tahnia</span> Espinoza</h4>
-                    <p>Especialista en recurso humano, buscando talento adecuado a las necesidades de la empresa. </p>
+                    <h4><span class="navy"><%= @rhname %></span> <%= @rhlastname %></h4>
+                    <p><%= @rhdescr %></p>
                     <ul class="list-inline social-icon">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/thania.espinoza.503" target="_blank"><i class="fa fa-facebook"></i></a>
                         </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -179,14 +310,14 @@
             <div class="col-sm-4">
                 <div class="team-member wow zoomIn">
                     <img src="assets/avatar1.jpg" class="img-fluid rounded-circle" alt="">
-                    <h4><span class="navy">Raul</span> Ochoa</h4>
-                    <p>Nuestro lider de equipo, atendiendo las necesidades del cliente para ofrecer el mejor costo/servicio.</p>
+                    <h4><span class="navy"><%= @ceoname %></span> <%= @ceolastname %></h4>
+                    <p><%= @ceodescr %></p>
                     <ul class="list-inline social-icon">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/Grupotulpe/" target="_blank"><i class="fa fa-facebook"></i></a>
                         </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -194,14 +325,14 @@
             <div class="col-sm-4 wow fadeInRight">
                 <div class="team-member">
                     <img src="assets/avatar2.jpg" class="img-fluid rounded-circle img-small" alt="">
-                    <h4><span class="navy">Abraham</span> Acosta</h4>
-                    <p>Especialista de operaciones, supervisando que todos los servicios se cumplan en tiempo y forma.</p>
+                    <h4><span class="navy"><%= @opname %></span> <%= @oplastname %></h4>
+                    <p><%= @opdescr %></p>
                     <ul class="list-inline social-icon">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
                         </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a>
+                        <li class="list-inline-item"><a href="https://www.facebook.com/Grupotulpe/" target="_blank"><i class="fa fa-facebook"></i></a>
                         </li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                        <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -209,40 +340,10 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-center m-t-lg m-b-lg">
-                <p>El equipo esta comprometido con nuestros clientes, siempre al pendiente y brindando las herramientas necesarias para su tranquilidad.</p>
+                <p><%= @teamfooter %></p>
             </div>
         </div>
     </div>
-</section>
-
-<section class="features">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="navy-line"></div>
-                <h1>Even more great feautres</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-            </div>
-        </div>
-        <div class="row features-block">
-            <div class="col-lg-3 features-text wow fadeInLeft">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                <a href="" class="btn btn-primary">Learn more</a>
-            </div>
-            <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
-                <img src="assets/iphone.jpg" class="img-fluid" alt="dashboard">
-            </div>
-            <div class="col-lg-3 features-text text-right wow fadeInRight">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
-                <a href="" class="btn btn-primary">Learn more</a>
-            </div>
-        </div>
-    </div>
-
 </section>
 
 <section class="timeline gray-section">
@@ -250,8 +351,8 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Our workflow</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                <h1><%= @flowheader %></h1>
+                <p><%= @flowtitle %> </p>
             </div>
         </div>
         <div class="row features-block">
@@ -264,11 +365,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Meeting</h2>
-                            <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
-                            </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Today <br/> <small>Dec 24</small> </span>
+                            <h2><%= @flow1t %></h2>
+                            <p><%= @flow1p %></p>
+                            <span class="vertical-date"><%=l Date.today, locale: :es, format: :diasem %> <br/> <small><%=l Date.today, locale: :es, format: :mesdia %></small> </span>
                         </div>
                     </div>
 
@@ -278,10 +377,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Decision</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Tomorrow <br/> <small>Dec 26</small> </span>
+                            <h2><%= @flow2t %></h2>
+                            <p><%= @flow2p %></p>
+                            <span class="vertical-date"> <%=l Date.today + 2, locale: :es, format: :diasem %> <br/> <small><%=l Date.today + 2, locale: :es, format: :mesdia %></small> </span>
                         </div>
                     </div>
 
@@ -291,10 +389,9 @@
                         </div>
 
                         <div class="vertical-timeline-content">
-                            <h2>Implementation</h2>
-                            <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                            <a href="#" class="btn btn-xs btn-primary"> More info</a>
-                            <span class="vertical-date"> Monday <br/> <small>Jan 02</small> </span>
+                            <h2><%= @flow3t %></h2>
+                            <p><%= @flow3p %></p>
+                            <span class="vertical-date"> Día cero<br/> <small>Fecha inicio</small> </span>
                         </div>
                     </div>
 
@@ -312,19 +409,16 @@
         <div class="row">
             <div class="col-lg-12 text-center wow zoomIn">
                 <i class="fa fa-comment big-icon"></i>
-                <h1>
-                    What our users say
-                </h1>
+                <h1><%= @clienthead %></h1>
                 <div class="testimonials-text">
-                    <i>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."</i>
+                    <i><%= @clienttext %></i>
                 </div>
                 <small>
-                    <strong>12.02.2014 - Andy Smith</strong>
+                    <strong><%= @clientwho %></strong>
                 </small>
             </div>
         </div>
     </div>
-
 </section>
 
 <section class="comments gray-section" style="margin-top: 0">
@@ -332,67 +426,63 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>What our partners say</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
+                <h1>¿Que más comentarios tenemos?</h1>
+                <p>Nuestros clientes respaldan nuestra calidad y servicio.</p>
             </div>
         </div>
         <div class="row features-block">
             <div class="col-lg-4">
                 <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                    "Ut nulla ullamco esse tempor reprehenderit exercitation quis exercitation esse non cupidatat eu commodo."
                 </div>
                 <div class="comments-avatar">
                     <a href="" class="float-left">
-                        <img alt="image" src="assets/avatar3.jpg">
+                        <img alt="image" src="assets/avatar3_bck.jpg">
                     </a>
                     <div class="media-body">
                         <div class="commens-name">
-                            Andrew Williams
+                            Yessi Rios
                         </div>
-                        <small class="text-muted">Company X from California</small>
+                        <small class="text-muted">Visteon</small>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                    "Ipsum ullamco amet sint tempor minim velit sint dolore do. Aliqua est nostrud minim in et minim sunt fugiat consectetur nostrud laboris et minim."
                 </div>
                 <div class="comments-avatar">
                     <a href="" class="float-left">
-                        <img alt="image" src="assets/avatar1.jpg">
+                        <img alt="image" src="assets/avatar4.jpg">
                     </a>
                     <div class="media-body">
                         <div class="commens-name">
-                            Andrew Williams
+                            José Luis Cuellar
                         </div>
-                        <small class="text-muted">Company X from California</small>
+                        <small class="text-muted">Heneywell</small>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="bubble">
-                    "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                    "Culpa nostrud consectetur ipsum ut. Nostrud exercitation cupidatat amet incididunt non ipsum voluptate."
                 </div>
                 <div class="comments-avatar">
                     <a href="" class="float-left">
-                        <img alt="image" src="assets/avatar2.jpg">
+                        <img alt="image" src="assets/avatar6.jpg">
                     </a>
                     <div class="media-body">
                         <div class="commens-name">
-                            Andrew Williams
+                            Omar Andujo
                         </div>
-                        <small class="text-muted">Company X from California</small>
+                        <small class="text-muted">alsuper</small>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
-
 </section>
 
 <section class="features">
@@ -400,79 +490,78 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Más y más servicios o herramientas adicionales</h1>
-                <p>Para su comidad contamos con herramientas tecnologicas que te permitiran estar tranquilos y controlar tus gastos. </p>
+                <h1><%= @mfeaturehead %></h1>
+                <p><%= @mfeaturetitle %></p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
-                <i class="fa fa-bar-chart big-icon float-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                <small><%= @ttpnsmall %></small>
+                <h2><%= @mfeature1t %></h2>
+                <i class="fa fa-medkit big-icon float-right"></i>
+                <p><%= @mfeature1p %></p>
             </div>
             <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
+                <small><%= @ttpnsmall %></small>
+                <h2><%= @mfeature2t %></h2>
                 <i class="fa fa-bolt big-icon float-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                <p><%= @mfeature2p %></p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-5 col-lg-offset-1 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
+                <small><%= @ttpnsmall %></small>
+                <h2><%= @mfeature3t %></h2>
                 <i class="fa fa-clock-o big-icon float-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                <p><%= @mfeature3p %></p>
             </div>
             <div class="col-lg-5 features-text">
-                <small>INSPINIA</small>
-                <h2>Perfectly designed </h2>
+                <small><%= @ttpnsmall %></small>
+                <h2><%= @mfeature4t %></h2>
                 <i class="fa fa-users big-icon float-right"></i>
-                <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                <p><%= @mfeature4p %></p>
             </div>
         </div>
     </div>
-
 </section>
 <section id="pricing" class="pricing">
     <div class="container">
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Servicios Premium</h1>
-                <p>Pregunta por toda la gama de servicios adicionales con los que contamos.</p>
+                <h1><%= @vehiculohead %></h1>
+                <p><%= @vehiculotitle %></p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4 wow zoomIn">
                 <ul class="pricing-plan list-unstyled">
                     <li class="pricing-title">
-                        Auto
+                        <%= @vehiculo11%>
                     </li>
                     <li class="pricing-desc">
-                        Ideal para grupos pequeños de personal en tiempo extra o ejecutivos que requieren servicios especializados de transportación.
+                        <%= @vehiculo12 %>
                     </li>
                     <li class="pricing-price">
                         <span>1 - 4</span> / usuarios
                     </li>
                     <li>
-                        Dashboards
+                        Auto utilitario o de lujo
                     </li>
                     <li>
-                        Projects view
+                        Modelos recientes
                     </li>
                     <li>
-                        Contacts
+                        Aire acondicionado
                     </li>
                     <li>
-                        Calendar
+                        Calefacción
                     </li>
                     <li>
-                        AngularJs
+                        Rastreo GPS
                     </li>
                     <li>
-                        <a class="btn btn-primary btn-xs" href="#">Cotizar</a>
+                        <a class="btn btn-primary btn-xs" href="mailto:recursoshumanos@ttpn.com.mx">Contactar</a>
                     </li>
                 </ul>
             </div>
@@ -480,34 +569,34 @@
             <div class="col-lg-4 wow zoomIn">
                 <ul class="pricing-plan list-unstyled selected">
                     <li class="pricing-title">
-                        Van
+                        <%= @vehiculo21 %>
                     </li>
                     <li class="pricing-desc">
-                        La mejor opción de transportar grupos pequeños a diferentes zonas de la cidad ya sea en tiempo regular o tiempos extras.
+                        <%= @vehiculo22%>
                     </li>
                     <li class="pricing-price">
                         <span>5 - 14</span> / usuarios
                     </li>
                     <li>
-                        Dashboards
+                        Unidades equipadas
                     </li>
                     <li>
-                        Projects view
+                        Modelos recientes
                     </li>
                     <li>
-                        Contacts
+                        Fácil acceso
                     </li>
                     <li>
-                        Calendar
+                        Ventanillas laterales
                     </li>
                     <li>
-                        AngularJs
+                        Cristales con protección UV
                     </li>
                     <li>
-                        <strong>Support platform</strong>
+                        Rastreo por GPS
                     </li>
                     <li class="plan-action">
-                        <a class="btn btn-primary btn-xs" href="#">Cotizar</a>
+                        <a class="btn btn-primary btn-xs" href="mailto:recursoshumanos@ttpn.com.mx">Contactar</a>
                     </li>
                 </ul>
             </div>
@@ -515,38 +604,38 @@
             <div class="col-lg-4 wow zoomIn">
                 <ul class="pricing-plan list-unstyled">
                     <li class="pricing-title">
-                        Camion
+                        <%= @vehiculo31 %>
                     </li>
                     <li class="pricing-desc">
-                        La opción de ruteo para tu empresa, evita problemas de llegada pues siempre estamos a tiempo.
+                        <%= @vehiculo32 %>
                     </li>
                     <li class="pricing-price">
                         <span>15 - 40</span> / usuarios
                     </li>
                     <li>
-                        Dashboards
+                        Unidades recientes 
                     </li>
                     <li>
-                        Projects view
+                        Ideal para transporte urbano
                     </li>
                     <li>
-                        Contacts
+                        Ventanillas laterales
                     </li>
                     <li>
-                        Calendar
+                        Flotilla de fácil identificación
                     </li>
                     <li>
-                        AngularJs
+                        Rastreo por GPS
                     </li>
                     <li>
-                        <a class="btn btn-primary btn-xs" href="#">Cotizar</a>
+                        <a class="btn btn-primary btn-xs" href="mailto:recursoshumanos@ttpn.com.mx">Contactar</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="row m-t-lg">
             <div class="col-lg-12 text-center m-t-lg">
-                <p>*Tienes alguna necesidad en particular?, contactanos, con gusto pasamos a visitarte ya contamos con una extensa variedad de opciones. <span class="navy">Todos los servicios</span>  cuentan con seguro de viajero.</p>
+                <p>* ¿Tiene alguna necesidad en particular?, contáctenos, con gusto pasamos a visitarle, contamos con una gran variedad de opciones. Además<span class="navy"> todos los servicios</span>  cuentan con seguro de viajero.</p>
             </div>
         </div>
     </div>
@@ -558,14 +647,14 @@
         <div class="row m-b-lg">
             <div class="col-lg-12 text-center">
                 <div class="navy-line"></div>
-                <h1>Contactanos</h1>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+                <h1><%= @contacthead %></h1>
+                <p><%= @contacttitle %></p>
             </div>
         </div>
         <div class="row m-b-lg justify-content-center">
             <div class="col-lg-3 ">
                 <address>
-                    <strong><span class="navy">TTPN, SA de CV.</span></strong><br/>
+                    <a href="https://goo.gl/maps/GpbRwN5KFkjfgmSY9" target="_blank"><strong><span class="navy"><i class="fa fa-map-marker"></i> Transportación Turística y Privada del Norte SA de CV.</span></strong></a><br/>
                     Av. Haciendas del Valle, 7104<br/>
                     Haciendas del Valle I Etapa,<br/> 
                     31217 Chihuahua, Chih.<br/>
@@ -574,29 +663,29 @@
             </div>
             <div class="col-lg-4">
                 <p class="text-color">
-                    Estamos localizados en Plaza Hollywood, nuestra hubicación esta en una de las mejores zonas de la ciudad y de mayor crecimiento.
+                    <%= @contacttext %>
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="mailto:recursoshumanos@ttpn.com.mx" class="btn btn-primary">Mandanos un email</a>
+                <a href="mailto:recursoshumanos@ttpn.com.mx" class="btn btn-primary">Envienos un correo</a>
                 <p class="m-t-sm">
-                    O siguenos en redes sociales
+                    O síganos en redes sociales
                 </p>
                 <ul class="list-inline social-icon">
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a>
+                    <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-instagram"></i></a>
                     </li>
-                    <li class="list-inline-item"><a href="https://www.facebook.com/Grupotulpe/"><i class="fa fa-facebook"></i></a>
+                    <li class="list-inline-item"><a href="https://www.facebook.com/Grupotulpe/" target="_blank" ><i class="fa fa-facebook"></i></a>
                     </li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a>
+                    <li class="list-inline-item"><a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 text-center m-t-lg m-b-lg">
-                <p><strong>&copy; 2015 Transportación Turistica y Privada del Norte</strong><br/> consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                <p><strong>&copy; <%= @contactfooter %></strong><br/><%= @contactfootert %></p>
             </div>
         </div>
     </div>
